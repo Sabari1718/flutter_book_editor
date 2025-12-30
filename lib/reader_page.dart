@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'widget_models.dart';
 
 class ReaderPage extends StatefulWidget {
-  const ReaderPage({super.key});
+   ReaderPage({super.key});
 
   @override
   State<ReaderPage> createState() => _ReaderPageState();
@@ -48,18 +48,18 @@ class _ReaderPageState extends State<ReaderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // 🌸 READER BACKGROUND (soft & calm)
-      backgroundColor: const Color(0xFFF7F3FF),
 
-      // 📖 CLEAN APP BAR (read mode)
+      backgroundColor:  Color(0xFFF7F3FF),
+
+
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black87),
+          icon:  Icon(Icons.arrow_back, color: Colors.black87),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
+        title:  Text(
           "BookEditor – Reader",
           style: TextStyle(
             fontSize: 17,
@@ -73,29 +73,29 @@ class _ReaderPageState extends State<ReaderPage> {
 
       body: Column(
         children: [
-          const SizedBox(height: 12),
+          SizedBox(height: 12),
 
-          // 🔘 LOAD JSON BUTTON
+
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
               foregroundColor: Colors.deepPurple,
               elevation: 3,
-              padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
+              padding:  EdgeInsets.symmetric(horizontal: 22, vertical: 12),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
             onPressed: loadJson,
-            child: const Text(
+            child:  Text(
               "Load JSON",
               style: TextStyle(fontWeight: FontWeight.w600),
             ),
           ),
 
-          const SizedBox(height: 16),
+          SizedBox(height: 16),
 
-          // 📄 PAGE CONTENT
+
           Expanded(
             child: loaded
                 ? Center(
@@ -104,7 +104,7 @@ class _ReaderPageState extends State<ReaderPage> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
-                  boxShadow: const [
+                  boxShadow: [
                     BoxShadow(
                       color: Colors.black12,
                       blurRadius: 14,
@@ -114,14 +114,14 @@ class _ReaderPageState extends State<ReaderPage> {
                 ),
                 child: GridView.count(
                   crossAxisCount: 2,
-                  padding: const EdgeInsets.all(16),
+                  padding:  EdgeInsets.all(16),
                   mainAxisSpacing: 12,
                   crossAxisSpacing: 12,
                   children: widgets.map(renderWidget).toList(),
                 ),
               ),
             )
-                : const Expanded(
+                :  Expanded(
               child: Center(
                 child: Text(
                   "Click 'Load JSON' to view page",
@@ -138,7 +138,7 @@ class _ReaderPageState extends State<ReaderPage> {
     );
   }
 
-  // 🧩 RENDER WIDGETS (READ-ONLY)
+
   Widget renderWidget(PageWidget widget) {
     if (widget.type == "Text") {
       return Text(
@@ -163,6 +163,6 @@ class _ReaderPageState extends State<ReaderPage> {
         ),
       );
     }
-    return const SizedBox();
+    return SizedBox();
   }
 }

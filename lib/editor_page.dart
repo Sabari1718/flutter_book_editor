@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'widget_models.dart';
 
 class EditorPage extends StatefulWidget {
-  const EditorPage({super.key});
+  EditorPage({super.key});
 
   @override
   State<EditorPage> createState() => _EditorPageState();
@@ -46,21 +46,21 @@ class _EditorPageState extends State<EditorPage> {
 
     debugPrint(jsonEncode(jsonData));
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("JSON exported (check console)")),
+       SnackBar(content: Text("JSON exported (check console)")),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // 🌸 UNIQUE BACKGROUND
-      backgroundColor: const Color(0xFFF6F4FF),
 
-      // 💪 GETHA APP BAR
+      backgroundColor: Color(0xFFF6F4FF),
+
+
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: const Text(
+        title:  Text(
           "Flutter Book Editor",
           style: TextStyle(
             fontSize: 18,
@@ -70,13 +70,13 @@ class _EditorPageState extends State<EditorPage> {
           ),
         ),
         actions: [
-          // Save button (white card)
+
           Container(
-            margin: const EdgeInsets.only(right: 8),
+            margin:EdgeInsets.only(right: 8),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                   color: Colors.black12,
                   blurRadius: 6,
@@ -85,27 +85,27 @@ class _EditorPageState extends State<EditorPage> {
               ],
             ),
             child: IconButton(
-              icon: const Icon(Icons.save, color: Colors.deepPurple),
+              icon:  Icon(Icons.save, color: Colors.deepPurple),
               onPressed: exportJson,
             ),
           ),
 
-          // Reader button (primary action)
+
           Container(
-            margin: const EdgeInsets.only(right: 12),
+            margin:  EdgeInsets.only(right: 12),
             decoration: BoxDecoration(
               color: Colors.deepPurple,
               borderRadius: BorderRadius.circular(10),
             ),
             child: IconButton(
-              icon: const Icon(Icons.menu_book, color: Colors.white),
+              icon:  Icon(Icons.menu_book, color: Colors.white),
               onPressed: () => Navigator.pushNamed(context, '/reader'),
             ),
           ),
         ],
       ),
 
-      // 📄 PAGE CANVAS
+
       body: Center(
         child: Container(
           width: 800,
@@ -113,7 +113,7 @@ class _EditorPageState extends State<EditorPage> {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
-            boxShadow: const [
+            boxShadow:  [
               BoxShadow(
                 color: Colors.black12,
                 blurRadius: 16,
@@ -123,7 +123,7 @@ class _EditorPageState extends State<EditorPage> {
           ),
           child: GridView.count(
             crossAxisCount: 2,
-            padding: const EdgeInsets.all(16),
+            padding: EdgeInsets.all(16),
             mainAxisSpacing: 12,
             crossAxisSpacing: 12,
             children: widgets.map(renderWidget).toList(),
@@ -131,7 +131,7 @@ class _EditorPageState extends State<EditorPage> {
         ),
       ),
 
-      // ➕ FLOATING ACTION BUTTONS
+
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -140,22 +140,22 @@ class _EditorPageState extends State<EditorPage> {
             backgroundColor: Colors.deepPurple,
             elevation: 4,
             onPressed: addText,
-            child: const Icon(Icons.text_fields),
+            child:  Icon(Icons.text_fields),
           ),
-          const SizedBox(height: 10),
+           SizedBox(height: 10),
           FloatingActionButton(
             mini: true,
             backgroundColor: Colors.deepPurple,
             elevation: 4,
             onPressed: addImage,
-            child: const Icon(Icons.image),
+            child:  Icon(Icons.image),
           ),
         ],
       ),
     );
   }
 
-  // 🧩 WIDGET RENDERER
+
   Widget renderWidget(PageWidget widget) {
     if (widget.type == "Text") {
       return Text(
@@ -180,6 +180,6 @@ class _EditorPageState extends State<EditorPage> {
         ),
       );
     }
-    return const SizedBox();
+    return SizedBox();
   }
 }
